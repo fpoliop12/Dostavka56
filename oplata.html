@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Оплата заказа - Pizza Bar</title>
+    <link rel="stylesheet" href="css/oplata.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </head>
+  <body>
+    <!-- Шапка сайта -->
+    <header class="animate__animated animate__fadeInDown">
+      <div class="header-container">
+        <div class="logo">
+          <a href="glavnii.html">Pizza<br />bar</a>
+        </div>
+        <div class="header-info">
+          <p>Доставка еды по Оренбургу</p>
+          <p>8 (987) 868 77-49</p>
+        </div>
+        <div class="header-buttons">
+          <button class="contact-button pulse">Контакты</button>
+          <button class="login-button pulse">Войти</button>
+          <div
+            id="userInfo"
+            style="display: none; align-items: center; gap: 10px"
+          >
+            <span
+              id="usernameDisplay"
+              style="font-weight: bold; color: #fff"
+            ></span>
+            <button
+              id="logoutButton"
+              style="
+                background: #ff4d4d;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                border-radius: 5px;
+                cursor: pointer;
+              "
+            >
+              Выйти
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Навигация -->
+    <nav class="animate__animated animate__fadeIn">
+      <ul>
+        <li><a href="glavnii.html" data-target="pizza">Пицца</a></li>
+        <li><a href="glavnii.html" data-target="soups">Супы</a></li>
+        <li><a href="glavnii.html" data-target="salads">Салаты</a></li>
+        <li><a href="glavnii.html" data-target="drinks">Напитки</a></li>
+        <li><a href="glavnii.html" data-target="desserts">Десерты</a></li>
+        <li><a href="glavnii.html" data-target="combo">Комбо</a></li>
+        <li><a href="glavnii.html" data-target="contacts">Контакты</a></li>
+        <li class="cart-link">
+          <a href="zakaz.html">Корзина | <span>0</span></a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Основной контент -->
+    <main>
+      <section id="payment" class="content-section active">
+        <h2 class="section-title">Оплата заказа</h2>
+        <div class="payment-container">
+          <div class="order-summary">
+            <h3>Ваш заказ</h3>
+            <div id="cart-items" class="cart-items-container">
+              <div class="empty-cart">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png"
+                  alt="Empty cart"
+                  width="80"
+                />
+                <p>Ваша корзина пуста</p>
+              </div>
+            </div>
+            <div class="cart-summary">
+              <div class="total-section">
+                <div class="total-row">
+                  <span>Сумма:</span>
+                  <span id="cart-subtotal">0 ₽</span>
+                </div>
+                <div class="total-row discount">
+                  <span>Скидка:</span>
+                  <span id="cart-discount">0 ₽</span>
+                </div>
+                <div class="total-row grand-total">
+                  <span>Итого:</span>
+                  <span id="cart-total">0 ₽</span>
+                </div>
+              </div>
+            </div>
+            <div class="delivery-info">
+              <h3>Информация о доставке</h3>
+              <p>
+                <strong>Адрес:</strong>
+                <span id="delivery-address">Не указан</span>
+              </p>
+              <p>
+                <strong>Комментарий:</strong>
+                <span id="delivery-comment">Отсутствует</span>
+              </p>
+              <p>
+                <strong>Примерное время доставки:</strong>
+                <span id="estimated-time">30-45 минут</span>
+              </p>
+            </div>
+          </div>
+          <div class="payment-section">
+            <h3>Выберите способ оплаты</h3>
+            <form id="paymentForm" class="payment-form">
+              <div class="payment-option">
+                <input
+                  type="radio"
+                  id="cash"
+                  name="payment-method"
+                  value="cash"
+                  required
+                />
+                <label for="cash">Наличными курьеру</label>
+              </div>
+              <div class="payment-option">
+                <input
+                  type="radio"
+                  id="card"
+                  name="payment-method"
+                  value="card"
+                  required
+                />
+                <label for="card">Картой курьеру</label>
+              </div>
+              <button type="submit" class="submit-button">
+                <span>Подтвердить оплату</span>
+                <svg viewBox="0 0 13 10" height="10px" width="15px">
+                  <path d="M1,5 L11,5"></path>
+                  <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="suggestions-section">
+          <h3>Не хотите добавить что-то ещё?</h3>
+          <div class="product-grid">
+            <!-- Пицца -->
+
+            <div class="product-item">
+              <img src="img/pepe.webp" alt="Пепперони" />
+              <h3>Пепперони</h3>
+              <p class="product-price">550 ₽</p>
+              <button class="add-to-cart">В корзину</button>
+            </div>
+            <!-- Супы -->
+            <div class="product-item">
+              <img src="img/t.jpg" alt="Томатный суп" />
+              <h3>Томатный суп</h3>
+              <p class="product-price">250 ₽</p>
+              <button class="add-to-cart">В корзину</button>
+            </div>
+            <!-- Салаты -->
+            <div class="product-item">
+              <img src="img/297.970.jpg" alt="Цезарь" />
+              <h3>Цезарь</h3>
+              <p class="product-price">300 ₽</p>
+              <button class="add-to-cart">В корзину</button>
+            </div>
+            <!-- Напитки -->
+            <div class="product-item">
+              <img src="img/kola.webp" alt="Кола" />
+              <h3>Кола 0.5л</h3>
+              <p class="product-price">120 ₽</p>
+              <button class="add-to-cart">В корзину</button>
+            </div>
+            <!-- Десерты -->
+            <div class="product-item">
+              <img src="img/tira.jpg" alt="Тирамису" />
+              <h3>Тирамису</h3>
+              <p class="product-price">300 ₽</p>
+              <button class="add-to-cart">В корзину</button>
+            </div>
+            <!-- Комбо -->
+            <div class="product-item">
+              <img src="img/kombo.png" alt="Семейное комбо" />
+              <h3>Комбо 1</h3>
+              <p class="product-price">850 ₽</p>
+              <button class="add-to-cart">В корзину</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Подвал -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-contacts">
+          <h3>Контакты</h3>
+          <p>8 (987) 868 77-49</p>
+          <p>Связь с нами!</p>
+          <div class="social-icons">
+            <a href="#"
+              ><img
+                src="img/discord.svg"
+                alt="Discord"
+                width="30"
+                loading="lazy"
+            /></a>
+            <a href="#"
+              ><img
+                src="img/youtube.svg"
+                alt="YouTube"
+                width="30"
+                loading="lazy"
+            /></a>
+            <a href="#"
+              ><img src="img/vk.svg" alt="VK" width="30" loading="lazy"
+            /></a>
+          </div>
+        </div>
+        <div class="footer-newsletter">
+          <h3>Подписка на акции</h3>
+          <form>
+            <input type="email" placeholder="Ваш email" required />
+            <button type="submit">Подписаться</button>
+          </form>
+        </div>
+      </div>
+      <div class="copyright">ООО "Пицца" © 2023 Все права защищены</div>
+    </footer>
+
+    <!-- Уведомления -->
+    <div
+      id="notification"
+      style="
+        display: none;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #f9f9f9;
+        padding: 10px;
+        border: 1px solid #ccc;
+        z-index: 10000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        transition: opacity 0.3s ease;
+      "
+    ></div>
+
+    <script src="js/oplata.js"></script>
+  </body>
+</html>

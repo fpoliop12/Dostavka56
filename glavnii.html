@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pizza Bar</title>
+    <link rel="stylesheet" href="css/glavnii.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </head>
+  <body>
+    <!-- Шапка сайта -->
+    <header class="animate__animated animate__fadeInDown">
+      <div class="header-container">
+        <div class="logo">
+          <a href="#">Pizza<br />bar</a>
+        </div>
+        <div class="header-info">
+          <p>Доставка еды по Оренбургу</p>
+          <p>8 (987) 868 77-49</p>
+        </div>
+        <div class="header-buttons">
+          <button class="contact-button pulse">Контакты</button>
+          <button class="login-button pulse">Войти</button>
+          <div
+            id="userInfo"
+            style="display: none; align-items: center; gap: 10px"
+          >
+            <span
+              id="usernameDisplay"
+              style="font-weight: bold; color: #333"
+            ></span>
+            <button
+              id="logoutButton"
+              style="
+                background: #ff4d4d;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                border-radius: 5px;
+                cursor: pointer;
+              "
+            >
+              Выйти
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Навигация -->
+    <nav class="animate__animated animate__fadeIn">
+      <ul>
+        <li><a href="#" data-target="pizza">Пицца</a></li>
+        <li><a href="#" data-target="soups">Супы</a></li>
+        <li><a href="#" data-target="salads">Салаты</a></li>
+        <li><a href="#" data-target="drinks">Напитки</a></li>
+        <li><a href="#" data-target="desserts">Десерты</a></li>
+        <li><a href="#" data-target="combo">Комбо</a></li>
+        <li><a href="#" data-target="contacts">Контакты</a></li>
+        <li class="cart-link">
+          <a href="#" data-target="cart">Корзина | <span>0</span></a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Карусель -->
+    <div class="carousel-container animate__animated animate__fadeIn">
+      <div class="carousel">
+        <div class="slide">
+          <img src="img/bfgRt26wI3c.jpg" alt="Slide 1" loading="lazy" />
+        </div>
+        <div class="slide">
+          <img src="img/3ncacf2v1Ks.jpg" alt="Slide 2" loading="lazy" />
+        </div>
+        <div class="slide">
+          <img src="img/k_AXa9lwCoo.jpg" alt="Slide 3" loading="lazy" />
+        </div>
+      </div>
+      <button class="carousel-button prev">⬅</button>
+      <button class="carousel-button next">⮕</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <!-- Модальное окно "Войти" -->
+    <div id="loginModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <div class="modal-header">
+          <h2>Вход</h2>
+          <p>Введите свои данные для входа</p>
+        </div>
+        <form class="modal-form">
+          <div class="input-group">
+            <input type="text" id="username" name="username" required />
+            <label for="username">Имя пользователя</label>
+            <span class="input-icon">👤</span>
+          </div>
+
+          <div class="input-group">
+            <input type="password" id="password" name="password" required />
+            <label for="password">Пароль</label>
+            <span class="input-icon">🔒</span>
+          </div>
+
+          <div class="form-footer">
+            <button type="submit" class="submit-button">
+              <span>Войти</span>
+              <svg viewBox="0 0 13 10" height="10px" width="15px">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+              </svg>
+            </button>
+            <div class="alternative-actions">
+              <a href="#" class="register-link" id="openRegisterModal"
+                >Регистрация</a
+              >
+              <a href="#" class="forgot-password">Забыли пароль?</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Модальное окно "Регистрация" -->
+    <div id="registerModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <div class="modal-header">
+          <h2>Регистрация</h2>
+          <p>Создайте новый аккаунт</p>
+        </div>
+        <form class="modal-form" id="registerForm">
+          <div class="input-group">
+            <input type="text" id="regUsername" name="username" required />
+            <label for="regUsername">Имя пользователя</label>
+            <span class="input-icon">👤</span>
+          </div>
+          <div class="input-group">
+            <input type="email" id="regEmail" name="email" required />
+            <label for="regEmail">Email</label>
+            <span class="input-icon">✉️</span>
+          </div>
+          <div class="input-group">
+            <input type="password" id="regPassword" name="password" required />
+            <label for="regPassword">Пароль</label>
+            <span class="input-icon">🔒</span>
+          </div>
+          <div class="form-footer">
+            <button type="submit" class="submit-button">
+              <span>Зарегистрироваться</span>
+              <svg viewBox="0 0 13 10" height="10px" width="15px">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Модальное окно "Корзина" -->
+    <div id="cartModal" class="modal">
+      <div class="modal-content cart-modal">
+        <span class="close-button">&times;</span>
+        <div class="modal-header">
+          <h2>Ваша корзина</h2>
+          <div class="cart-count">
+            <span id="cart-items-count">0</span> товаров
+          </div>
+        </div>
+
+        <div id="cart-items" class="cart-items-container">
+          <div class="empty-cart">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png"
+              alt="Empty cart"
+              width="80"
+            />
+            <p>Ваша корзина пуста</p>
+          </div>
+        </div>
+
+        <div class="cart-summary">
+          <div class="promo-section">
+            <div class="input-group">
+              <input type="text" id="promo-code" placeholder=" " />
+              <label for="promo-code">Промокод</label>
+              <button id="apply-promo" class="promo-button">Применить</button>
+            </div>
+            <p id="promo-message"></p>
+          </div>
+
+          <div class="total-section">
+            <div class="total-row">
+              <span>Сумма:</span>
+              <span id="cart-subtotal">0 ₽</span>
+            </div>
+            <div class="total-row discount">
+              <span>Скидка:</span>
+              <span id="cart-discount">0 ₽</span>
+            </div>
+            <div class="total-row grand-total">
+              <span>Итого:</span>
+              <span id="cart-total">0 ₽</span>
+            </div>
+          </div>
+
+          <a href="zakaz.html" id="checkout-button" class="checkout-button">
+            <span>Оформить заказ</span>
+            <span id="checkout-spinner" class="spinner"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Основной контент -->
+    <main>
+      <section id="pizza" class="content-section active">
+        <h2 class="section-title">Пицца</h2>
+        <div class="products-container">
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/image-no-bg-preview (carve.photos) (12).png"
+                alt="Маргарита"
+                class="product-image"
+                loading="lazy"
+              />
+              <div class="product-badge">Хит</div>
+            </div>
+            <div class="product-details">
+              <h3>Маргарита</h3>
+              <p class="product-description">
+                Томатный соус, моцарелла, свежие томаты, базилик
+              </p>
+              <div class="product-footer">
+                <span class="product-price">450 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/pepe.webp"
+                alt="Пепперони"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Пепперони</h3>
+              <p class="product-description">
+                Томатный соус, моцарелла, пепперони
+              </p>
+              <div class="product-footer">
+                <span class="product-price">550 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/4sira.webp"
+                alt="Четыре сыра"
+                class="product-image"
+                loading="lazy"
+              />
+              <div class="product-badge">Новинка</div>
+            </div>
+            <div class="product-details">
+              <h3>Четыре сыра</h3>
+              <p class="product-description">
+                Сливочный соус, моцарелла, пармезан, дор блю, чеддер
+              </p>
+              <div class="product-footer">
+                <span class="product-price">600 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/gava.jpg"
+                alt="Гавайская"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Гавайская</h3>
+              <p class="product-description">
+                Томатный соус, моцарелла, ветчина, ананасы
+              </p>
+              <div class="product-footer">
+                <span class="product-price">580 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/miiso.jpeg"
+                alt="Мясная"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Мясная</h3>
+              <p class="product-description">
+                Томатный соус, моцарелла, ветчина, колбаса, бекон
+              </p>
+              <div class="product-footer">
+                <span class="product-price">620 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="soups" class="content-section">
+        <h2 class="section-title">Супы</h2>
+        <div class="products-container">
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/t.jpg"
+                alt="Томатный суп"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Томатный суп</h3>
+              <p class="product-description">
+                Свежие томаты, базилик, чесночные гренки
+              </p>
+              <div class="product-footer">
+                <span class="product-price">350 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/sup_gribnoj_so_slivkami.webp"
+                alt="Грибной крем-суп"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Грибной крем-суп</h3>
+              <p class="product-description">
+                Шампиньоны, сливки, зелень, гренки
+              </p>
+              <div class="product-footer">
+                <span class="product-price">380 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/S600xU_2x.webp"
+                alt="Минестроне"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Минестроне</h3>
+              <p class="product-description">Овощной суп с фасолью и пастой</p>
+              <div class="product-footer">
+                <span class="product-price">400 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/c1f7a4bf7f9cde8155430c9d57e40a56.jpg"
+                alt="Тыквенный крем-суп"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Тыквенный крем-суп</h3>
+              <p class="product-description">Тыква, сливки, семечки тыквы</p>
+              <div class="product-footer">
+                <span class="product-price">370 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/11111.webp"
+                alt="Куриный суп"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Куриный суп</h3>
+              <p class="product-description">
+                Куриный бульон, лапша, морковь, зелень
+              </p>
+              <div class="product-footer">
+                <span class="product-price">340 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="salads" class="content-section">
+        <h2 class="section-title">Салаты</h2>
+        <div class="products-container">
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/297.970.jpg"
+                alt="Цезарь"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Цезарь</h3>
+              <p class="product-description">
+                Курица, салат романо, сухарики, пармезан, соус цезарь
+              </p>
+              <div class="product-footer">
+                <span class="product-price">420 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/XXXL (1).webp"
+                alt="Греческий"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Греческий</h3>
+              <p class="product-description">
+                Огурец, томаты, фета, оливки, красный лук, оливковое масло
+              </p>
+              <div class="product-footer">
+                <span class="product-price">390 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/3018683f908211ae5dbc8e19d33420aa.jpg"
+                alt="Оливье"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Оливье</h3>
+              <p class="product-description">
+                Картофель, морковь, колбаса, горошек, майонез
+              </p>
+              <div class="product-footer">
+                <span class="product-price">350 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/10cdc8a92b0ae66271231e1cf37206e4.jpg"
+                alt="Капрезе"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Капрезе</h3>
+              <p class="product-description">
+                Моцарелла, томаты, базилик, бальзамический соус
+              </p>
+              <div class="product-footer">
+                <span class="product-price">410 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="drinks" class="content-section">
+        <h2 class="section-title">Напитки</h2>
+        <div class="products-container">
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/kola.webp"
+                alt="Кола"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Кола</h3>
+              <p class="product-description">Газированный напиток, 0.5л</p>
+              <div class="product-footer">
+                <span class="product-price">120 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/moxito.png"
+                alt="Лимонад"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Мохито</h3>
+              <p class="product-description">Холодный мохито, 0.5л</p>
+              <div class="product-footer">
+                <span class="product-price">150 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/mors.webp"
+                alt="Морс"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Морс</h3>
+              <p class="product-description">Ягодный морс, 0.5л</p>
+              <div class="product-footer">
+                <span class="product-price">140 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/XXXL (2).webp"
+                alt="Чай"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Чай</h3>
+              <p class="product-description">Черный чай, 0.3л</p>
+              <div class="product-footer">
+                <span class="product-price">100 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="desserts" class="content-section">
+        <h2 class="section-title">Десерты</h2>
+        <div class="products-container">
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/tira.jpg"
+                alt="Тирамису"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Тирамису</h3>
+              <p class="product-description">
+                Маскарпоне, кофе, савоярди, какао
+              </p>
+              <div class="product-footer">
+                <span class="product-price">300 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/i.webp"
+                alt="Чизкейк"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Чизкейк</h3>
+              <p class="product-description">
+                Сливочный сыр, печенье, ягодный соус
+              </p>
+              <div class="product-footer">
+                <span class="product-price">320 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/Prajitura-Belsug-de-ciocolata.jpg"
+                alt="Брауни"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Брауни</h3>
+              <p class="product-description">Шоколад, орехи, сливочный крем</p>
+              <div class="product-footer">
+                <span class="product-price">280 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/js-shake.jpg"
+                alt="Мороженое"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Мороженое</h3>
+              <p class="product-description">Ванильное мороженое, 150г</p>
+              <div class="product-footer">
+                <span class="product-price">250 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="combo" class="content-section">
+        <h2 class="section-title">Комбо</h2>
+        <div class="products-container">
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/kombo.png"
+                alt="Комбо 1"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Комбо 1</h3>
+              <p class="product-description">
+                Пицца Маргарита, кола 0.5л, чизкейк
+              </p>
+              <div class="product-footer">
+                <span class="product-price">850 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/kombo.png"
+                alt="Комбо 2"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Комбо 2</h3>
+              <p class="product-description">
+                Пицца Пепперони, лимонад 0.5л, тирамису
+              </p>
+              <div class="product-footer">
+                <span class="product-price">900 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/kombo.png"
+                alt="Комбо 3"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Комбо 3</h3>
+              <p class="product-description">
+                Пицца Четыре сыра, морс 0.5л, брауни
+              </p>
+              <div class="product-footer">
+                <span class="product-price">950 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-image-container">
+              <img
+                src="img/kombo.png"
+                alt="Комбо 4"
+                class="product-image"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-details">
+              <h3>Комбо 4</h3>
+              <p class="product-description">
+                Пицца Гавайская, чай 0.3л, мороженое
+              </p>
+              <div class="product-footer">
+                <span class="product-price">880 ₽</span>
+                <button class="add-to-cart">В корзину</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacts" class="content-section">
+        <h2 class="section-title">Контакты</h2>
+        <div class="contacts-container">
+          <div class="contact-info">
+            <h3>Адрес</h3>
+            <p>г. Оренбург, ул. Волгоградского, 20</p>
+            <h3>Телефон</h3>
+            <p>8 (987) 868 77-49</p>
+            <h3>Часы работы</h3>
+            <p>Ежедневно с 10:00 до 22:00</p>
+          </div>
+          <div id="map" class="footer-map"></div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-contacts">
+          <h3>Контакты</h3>
+          <p>8 (987) 868 77-49</p>
+          <p>Связь с нами!</p>
+          <div class="social-icons">
+            <a href="#"
+              ><img
+                src="img/image-no-bg-preview (carve.photos) (25).png"
+                alt="Discord"
+                width="30"
+                loading="lazy"
+            /></a>
+            <a href="#"
+              ><img
+                src="img/image-no-bg-preview (carve.photos) (26).png"
+                alt="YouTube"
+                width="30"
+                loading="lazy"
+            /></a>
+            <a href="#"
+              ><img
+                src="img/image-no-bg-preview (carve.photos) (27).png"
+                alt="VK"
+                width="30"
+                loading="lazy"
+            /></a>
+          </div>
+        </div>
+        <div class="footer-newsletter">
+          <h3>Подписка на акции</h3>
+          <form>
+            <input type="email" placeholder="Ваш email" required />
+            <button type="submit">Подписаться</button>
+          </form>
+        </div>
+      </div>
+      <div class="copyright">ООО "Пицца" © 2023 Все права защищены</div>
+    </footer>
+
+    <script
+      src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=YOUR_API_KEY"
+      type="text/javascript"
+    ></script>
+    <script src="js/glavnii.js"></script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'93e304545bd47b9a',t:'MTc0Njk4MDU2NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>

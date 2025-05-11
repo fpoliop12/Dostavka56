@@ -1,0 +1,385 @@
+* {
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(to bottom, #f9f9f9, #e0e7ff);
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Анимации */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Шапка */
+header {
+  background: linear-gradient(to right, #1a1a1a, #333);
+  color: #fff;
+  padding: 15px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo a {
+  font-size: 2.2em;
+  font-weight: 900;
+  color: #ffcc00;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.header-info p {
+  margin: 5px 0;
+  text-align: center;
+  font-size: 0.9em;
+  color: #ddd;
+}
+
+.header-buttons button {
+  background: linear-gradient(to right, #ffcc00, #ff9900);
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 0.9em;
+  transition: all 0.3s ease;
+}
+
+.header-buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(to right, #ff9900, #ff6600);
+}
+
+/* Навигация */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 10px 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+nav li {
+  margin: 0 15px;
+}
+
+nav li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+nav li a:hover {
+  background: #ffcc00;
+  color: #000;
+  transform: scale(1.05);
+}
+
+nav li.cart-link a {
+  background: #ffcc00;
+  color: #000;
+}
+
+/* Основной контент */
+main {
+  max-width: 1200px;
+  margin: 80px auto 30px;
+  padding: 0 20px;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.2em;
+  color: #222;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(to right, #ffcc00, #ff6600);
+}
+
+/* Профиль */
+.profile-container {
+  background: #fff;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.profile-picture {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profile-picture img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ffcc00;
+  margin-bottom: 15px;
+}
+
+.upload-button {
+  display: inline-block;
+  background: linear-gradient(to right, #ffcc00, #ff9900);
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.upload-button:hover {
+  background: linear-gradient(to right, #ff9900, #ff6600);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#profile-picture-upload {
+  display: none;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 15px 15px 15px 45px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 1em;
+  transition: all 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #ffcc00;
+  box-shadow: 0 0 0 4px rgba(255, 204, 0, 0.2);
+  outline: none;
+}
+
+.input-group label {
+  position: absolute;
+  left: 45px;
+  top: 15px;
+  color: #999;
+  font-size: 1em;
+  transition: all 0.3s;
+  pointer-events: none;
+  background: #fff;
+  padding: 0 5px;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 35px;
+  font-size: 0.85em;
+  color: #ffcc00;
+}
+
+.input-icon {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  color: #999;
+}
+
+.form-footer {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.submit-button {
+  background: linear-gradient(to right, #ffcc00, #ff9900);
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.submit-button:hover {
+  background: linear-gradient(to right, #ff9900, #ff6600);
+  box-shadow: 0 5px 15px rgba(255, 204, 0, 0.4);
+}
+
+.submit-button svg {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: all 0.3s;
+  margin-left: 10px;
+}
+
+.submit-button:hover svg {
+  transform: translateX(5px);
+}
+
+#profile-message {
+  margin-top: 20px;
+  font-size: 0.95em;
+  text-align: center;
+}
+
+#profile-message.success {
+  color: #27ae60;
+}
+#profile-message.error {
+  color: #ff3333;
+}
+
+/* Подвал */
+footer {
+  background: linear-gradient(to top, #1a1a1a, #333);
+  color: #ddd;
+  padding: 50px 0 0;
+  margin-top: 60px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-contacts h3,
+.footer-newsletter h3 {
+  font-size: 1.4em;
+  margin-bottom: 15px;
+  color: #ffcc00;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+.footer-newsletter input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid #555;
+  border-radius: 8px;
+  background: #444;
+  color: #fff;
+}
+
+.footer-newsletter button {
+  background: linear-gradient(to right, #ffcc00, #ff9900);
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #000;
+  transition: all 0.3s;
+}
+
+.footer-newsletter button:hover {
+  background: linear-gradient(to right, #ff9900, #ff6600);
+}
+
+.copyright {
+  background: #000;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  font-size: 0.9em;
+  margin-top: 30px;
+}

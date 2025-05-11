@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Подтверждение заказа - Pizza Bar</title>
+    <link rel="stylesheet" href="css/confirm.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </head>
+  <body>
+    <!-- Шапка сайта -->
+    <header class="animate__animated animate__fadeInDown">
+      <div class="header-container">
+        <div class="logo">
+          <a href="glavnii.html">Pizza<br />bar</a>
+        </div>
+        <div class="header-info">
+          <p>Доставка еды по Оренбургу</p>
+          <p>8 (987) 868 77-49</p>
+        </div>
+        <div class="header-buttons">
+          <button class="contact-button pulse">Контакты</button>
+          <button class="login-button pulse">Войти</button>
+          <div
+            id="userInfo"
+            style="display: none; align-items: center; gap: 10px"
+          >
+            <span
+              id="usernameDisplay"
+              style="font-weight: bold; color: #fff"
+            ></span>
+            <button
+              id="logoutButton"
+              style="
+                background: #ff4d4d;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                border-radius: 5px;
+                cursor: pointer;
+              "
+            >
+              Выйти
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Навигация -->
+    <nav class="animate__animated animate__fadeIn">
+      <ul>
+        <li><a href="glavnii.html" data-target="pizza">Пицца</a></li>
+        <li><a href="glavnii.html" data-target="soups">Супы</a></li>
+        <li><a href="glavnii.html" data-target="salads">Салаты</a></li>
+        <li><a href="glavnii.html" data-target="drinks">Напитки</a></li>
+        <li><a href="glavnii.html" data-target="desserts">Десерты</a></li>
+        <li><a href="glavnii.html" data-target="combo">Комбо</a></li>
+        <li><a href="glavnii.html" data-target="contacts">Контакты</a></li>
+        <li class="cart-link">
+          <a href="zakaz.html">Корзина | <span>0</span></a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Основной контент -->
+    <main>
+      <section id="confirmation" class="content-section active">
+        <h2 class="section-title">Заказ успешно оформлен!</h2>
+        <div class="confirmation-container">
+          <div class="order-details">
+            <h3>Детали заказа</h3>
+            <div id="order-items" class="order-items-container"></div>
+            <div class="order-summary">
+              <div class="total-section">
+                <div class="total-row">
+                  <span>Сумма:</span>
+                  <span id="order-subtotal">0 ₽</span>
+                </div>
+                <div class="total-row discount">
+                  <span>Скидка:</span>
+                  <span id="order-discount">0 ₽</span>
+                </div>
+                <div class="total-row grand-total">
+                  <span>Итого:</span>
+                  <span id="order-total">0 ₽</span>
+                </div>
+              </div>
+            </div>
+            <div class="delivery-info">
+              <h3>Информация о доставке</h3>
+              <p>
+                <strong>Адрес:</strong>
+                <span id="delivery-address">Не указан</span>
+              </p>
+              <p>
+                <strong>Комментарий:</strong>
+                <span id="delivery-comment">Отсутствует</span>
+              </p>
+              <p>
+                <strong>Способ оплаты:</strong>
+                <span id="payment-method">Не указан</span>
+              </p>
+              <p>
+                <strong>Примерное время доставки:</strong>
+                <span id="estimated-time">30-45 минут</span>
+              </p>
+            </div>
+          </div>
+          <div class="confirmation-actions">
+            <a href="glavnii.html" class="submit-button"
+              >Вернуться на главную</a
+            >
+            <a
+              href="glavnii.html"
+              class="submit-button"
+              style="background: #ff9900"
+              >Продолжить покупки</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Подвал -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-contacts">
+          <h3>Контакты</h3>
+          <p>8 (987) 868 77-49</p>
+          <p>Связь с нами!</p>
+          <div class="social-icons">
+            <a href="#"
+              ><img
+                src="img/discord.svg"
+                alt="Discord"
+                width="30"
+                loading="lazy"
+            /></a>
+            <a href="#"
+              ><img
+                src="img/youtube.svg"
+                alt="YouTube"
+                width="30"
+                loading="lazy"
+            /></a>
+            <a href="#"
+              ><img src="img/vk.svg" alt="VK" width="30" loading="lazy"
+            /></a>
+          </div>
+        </div>
+        <div class="footer-newsletter">
+          <h3>Подписка на акции</h3>
+          <form>
+            <input type="email" placeholder="Ваш email" required />
+            <button type="submit">Подписаться</button>
+          </form>
+        </div>
+      </div>
+      <div class="copyright">ООО "Пицца" © 2023 Все права защищены</div>
+    </footer>
+
+    <!-- Уведомления -->
+    <div id="notification" style="display: none"></div>
+
+    <script src="js/confirm.js"></script>
+  </body>
+</html>
